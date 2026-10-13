@@ -1,44 +1,55 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (@media (prefers-color-scheme: dark));
 
+/* Violet : couleur de la lutte contre les violences faites aux femmes. Orange : « Orange the World » (ONU Femmes). */
 :root {
-  color-scheme: light;
-  --background: #f8fafc;
-  --foreground: #0b0f14;
+  color-scheme: light dark;
+  --header-h: 3.5rem;
+  --background: #fbf9ff;
+  --foreground: #1c1430;
   --card: #ffffff;
-  --card-foreground: #0b0f14;
-  --primary: #0f172a;
+  --card-foreground: #1c1430;
+  --primary: #5b21b6;
   --primary-foreground: #ffffff;
-  --secondary: #e2e8f0;
-  --secondary-foreground: #0f172a;
-  --muted: #e2e8f0;
-  --muted-foreground: #64748b;
-  --accent: #e11d48;
-  --accent-foreground: #ffffff;
-  --border: #cbd5e1;
-  --input: #cbd5e1;
-  --ring: #e11d48;
+  --secondary: #efe9fb;
+  --secondary-foreground: #3b1a78;
+  --muted: #f1edf8;
+  --muted-foreground: #645a78;
+  --accent: #efe9fb;
+  --accent-foreground: #3b1a78;
+  --danger: #c2410c;
+  --danger-soft: #fff1e8;
+  --danger-foreground: #ffffff;
+  --border: #e3dbf2;
+  --input: #e3dbf2;
+  --ring: #7c3aed;
+  --destructive: #b91c1c;
 }
 
-.dark {
-  color-scheme: dark;
-  --background: #0b0f14;
-  --foreground: #f8fafc;
-  --card: #0f172a;
-  --card-foreground: #f8fafc;
-  --primary: #f8fafc;
-  --primary-foreground: #0b0f14;
-  --secondary: #111827;
-  --secondary-foreground: #f8fafc;
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
-  --accent: #e11d48;
-  --accent-foreground: #ffffff;
-  --border: #1e293b;
-  --input: #1e293b;
-  --ring: #e11d48;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #120d1f;
+    --foreground: #f4f0fb;
+    --card: #1b1430;
+    --card-foreground: #f4f0fb;
+    --primary: #a78bfa;
+    --primary-foreground: #160f27;
+    --secondary: #2a2045;
+    --secondary-foreground: #ede7fb;
+    --muted: #231a3a;
+    --muted-foreground: #b3a8c9;
+    --accent: #2a2045;
+    --accent-foreground: #ede7fb;
+    --danger: #fb923c;
+    --danger-soft: #3a1d10;
+    --danger-foreground: #1a0d05;
+    --border: #33284f;
+    --input: #33284f;
+    --ring: #a78bfa;
+    --destructive: #f87171;
+  }
 }
 
 @theme inline {
@@ -60,6 +71,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-destructive: var(--destructive);
 }
 
 @layer base {
@@ -71,46 +86,13 @@
   }
 }
 
-@keyframes chat-nudge {
-  0%, 100% { transform: translateX(0) rotate(0deg); }
-  15% { transform: translateX(-5px) rotate(-7deg); }
-  30% { transform: translateX(5px) rotate(7deg); }
-  45% { transform: translateX(-4px) rotate(-5deg); }
-  60% { transform: translateX(4px) rotate(5deg); }
-  75% { transform: translateX(-2px) rotate(-2deg); }
+.prose-elle h2 {
+  @apply mt-8 mb-2 text-lg font-semibold;
 }
-
-.animate-chat-nudge {
-  animation: chat-nudge 700ms ease-in-out;
+.prose-elle p,
+.prose-elle li {
+  @apply leading-7 text-foreground/90;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-chat-nudge {
-    animation: none;
-  }
-}
-
-.card-carbon {
-  @apply relative overflow-hidden border border-border/50 bg-card transition-all duration-300 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/5;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 42%),
-    linear-gradient(135deg, var(--card) 0%, #0a0a0a 100%);
-}
-
-.dark .card-carbon::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: 
-    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.02) 2px, rgba(255,255,255,0.02) 4px),
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px);
-  pointer-events: none;
-}
-
-.btn-accent-primary {
-  @apply bg-accent hover:bg-accent/90 text-accent-foreground font-semibold transition-all duration-200 shadow-sm hover:shadow-md hover:shadow-accent/20;
-}
-
-.btn-accent-secondary {
-  @apply border border-accent/50 hover:border-accent text-foreground hover:text-accent transition-all duration-200;
+.prose-elle ul {
+  @apply my-2 list-disc space-y-1 pl-5;
 }

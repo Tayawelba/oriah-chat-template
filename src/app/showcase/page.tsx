@@ -1,6 +1,0 @@
-import Link from 'next/link'
-import { AlertTriangle, CheckCircle2, Link2, WifiOff } from 'lucide-react'
-
-export default function ShowcasePage() {
-  return <main className="page-shell"><header className="topbar"><Link className="brand" href="/chat"><span className="brand-mark">O</span> Oriah Chat</Link><Link className="ghost-button" href="/chat">Retour au chat</Link></header><section className="narrow-page"><p className="eyebrow">UI kit</p><h1>États prêts à intégrer</h1><p className="lede">Cette page documente les états les plus importants du chat.</p><div className="showcase-grid"><div className="showcase-card"><WifiOff size={19} /><strong>Connexion interrompue</strong><span>Message conservé et action de reconnexion visible.</span></div><div className="showcase-card"><AlertTriangle size={19} /><strong>Erreur serveur</strong><span>Erreur sûre, sans exposer le détail backend.</span></div><div className="showcase-card"><Link2 size={19} /><strong>Aperçu de lien</strong><span>Source, domaine et description regroupés.</span></div><div className="showcase-card"><CheckCircle2 size={19} /><strong>Réponse terminée</strong><span>Copie, feedback et partage disponibles.</span></div></div></section></main>
-}
